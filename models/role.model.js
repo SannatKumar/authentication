@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Role = mongoose.model(
     "Role",
-    new mongooser.Schem({
+    new mongoose.Schem({
         name:string
     })
 );
