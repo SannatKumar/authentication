@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const dbConfig = require("./config/db.config");
+
 
 const app = express();
 
@@ -20,7 +22,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Simple route come out" });
   });
 
-  const db = require("./app/models");
+  const db = require("./models");
   const Role = db.role;
   
   db.mongoose
@@ -72,6 +74,10 @@ app.get("/", (req, res) => {
       }
     });
   }
+
+  //Routes
+  require('./routes/auth.routes')(app);
+  require('./routes/user.routes')(app);
   // set port, listen for requests
   const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {
